@@ -1,73 +1,44 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+# api-ceps
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Principais Tecnologias Utilizadas
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+- Node.js
 
-## Description
+- TypeScript
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- Nest.js
 
-## Installation
+## Install
 
-```bash
-$ npm install
-```
+- execute: yarn ou npm install
 
-## Running the app
+## Para executar o projeto.
 
-```bash
-# development
-$ npm run start
+- execute: yarn dev ou npm dev
 
-# watch mode
-$ npm run start:dev
+## Documentação da API Swagger
 
-# production mode
-$ npm run start:prod
-```
+    http://localhost:3002/api/docs/#/
 
-## Test
+## Pré Requisito.
 
-```bash
-# unit tests
-$ npm run test
+Expor um serviço de BUSCA DE CEP
+Eu, como usuário, quero informar meu CEP e obter o nome da minha
+RUA, BAIRRO, CIDADE e ESTADO para preencher meus dados de cadastro de forma automática.
+Os critérios de aceite dessa história são:
+· Dado um CEP válido, deve retornar o endereço correspondente
+· Dado um CEP válido, que não exista o endereço, deve substituir um dígito da direita para a esquerda por zero até que o endereço seja localizado (Exemplo: Dado 22333999 tentar com 22333990, 22333900 …)
+· Dado um CEP inválido, deve retornar uma mensagem reportando o erro: "CEP inválido"O que se espera para as questões 1 - dicas e direcionamentos:
+· Os serviços devem receber e responder JSON;
+· Faça o uso de Mocks principalmente nos testes;
+· Os dados dos CEPs podem ser "Mocados";
 
-# e2e tests
-$ npm run test:e2e
+## Sobre
 
-# test coverage
-$ npm run test:cov
-```
+Foi criado uma api com objetivo de busca de CEP e retorna o Json com os dados de logradouro.
 
-## Support
+## Sugestões de Melhoria
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+Sobre a melhoria aplicada ao projeto, seria criar uma base de dados para guardar os dados consultados.
+Assim evitaria diversas requisições, faria uma verificação para buscar o cep na base de dados, se não for encontrado, buscaria os dados na api.
+Se ocorrer instabilidade na api: via cep, a base de dados poderia suprir o tempo de instabilidade.
