@@ -25,5 +25,6 @@ test('get /ceps retorna um valor válido', () => {
     .then((response) => {
       console.log('res', response.text);
       expect(response.status).toBe(403);
+      expect(response.text).toBe('CEP 22333999 inválido!');
     });
 });
