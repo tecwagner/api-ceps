@@ -8,13 +8,17 @@
 
 - Nest.js
 
-## Install
+## Instalação
 
 - execute: yarn ou npm install
 
-## Para executar o projeto.
+## Comando para executar o projeto.
 
-- execute: yarn dev ou npm dev
+- execute: yarn start:dev
+
+## Comando para executar o teste.
+
+- execute: yarn test:cov
 
 ## Documentação da API Swagger
 

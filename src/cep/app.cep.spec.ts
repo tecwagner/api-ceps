@@ -19,12 +19,11 @@ test('get /ceps retorna cep inválido', () => {
     });
 });
 
-test('get /ceps retorna um valor válido', () => {
+test('get /ceps validando a quantidade de caracter informada', () => {
   return request('http://localhost:3002')
     .get('/api/v1/ceps?zipcode=22333')
     .then((response) => {
       console.log('res', response.text);
       expect(response.status).toBe(403);
-      expect(response.text).toBe('CEP 22333999 inválido!');
     });
 });
