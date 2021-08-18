@@ -20,6 +20,14 @@
 
 - execute: yarn test:cov
 
+## Build docker
+
+- execute: docker build -t api-ceps .
+
+## Iniciar Projeto Docker
+
+- execute: docker run -p 3002:3002 api-ceps
+
 ## Documentação da API Swagger
 
     http://localhost:3002/api/docs/#/

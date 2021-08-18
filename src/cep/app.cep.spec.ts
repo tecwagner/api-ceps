@@ -15,7 +15,7 @@ test('get /ceps retorna cep inválido', () => {
     .get('/api/v1/ceps?zipcode=22333999')
     .then((response) => {
       console.log('res', response.text);
-      expect(response.status).toBe(403);
+      expect(response.status).toBe(400);
     });
 });
 
@@ -24,6 +24,6 @@ test('get /ceps validando a quantidade de caracter informada', () => {
     .get('/api/v1/ceps?zipcode=22333')
     .then((response) => {
       console.log('res', response.text);
-      expect(response.status).toBe(403);
+      expect(response.status).toBe(401);
     });
 });
