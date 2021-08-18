@@ -1,3 +1,3 @@
 export class FindCepViewModel {
-    zipcode: string;
-  }
+  zipcode: string;
+}

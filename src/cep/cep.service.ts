@@ -10,7 +10,7 @@ export class CepService {
 
   async getApiCep(zipCode: string): Promise<Cep> {
     if (!zipCode || zipCode.length !== 8) {
-      throw new HttpException('Digite um CEP Válido!', HttpStatus.FORBIDDEN);
+      throw new HttpException('Digite um CEP Válido!', HttpStatus.UNAUTHORIZED);
     }
 
     const result = await axios.get(
@@ -20,7 +20,7 @@ export class CepService {
     if (result.data.erro) {
       throw new HttpException(
         `CEP ${zipCode} inválido! `,
-        HttpStatus.FORBIDDEN,
+        HttpStatus.BAD_REQUEST,
       );
     }
 

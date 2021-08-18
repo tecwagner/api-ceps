@@ -21,7 +21,7 @@ export class CepController {
     description: 'Entidade do tipo CEP contendo as informações solicitadas.',
     type: Cep,
   })
-  @ApiResponse({ status: 404, description: 'Nenhum cep encontrado.' })
+  @ApiResponse({ status: 400, description: 'Nenhum cep encontrado.' })
   findCep(@Query() params: FindCepViewModel) {
     return this.cepService.getApiCep(params.zipcode);
   }
