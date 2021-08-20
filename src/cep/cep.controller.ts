@@ -22,7 +22,7 @@ export class CepController {
     type: Cep,
   })
   @ApiResponse({ status: 400, description: 'Nenhum cep encontrado.' })
-  findCep(@Query() params: FindCepViewModel) {
-    return this.cepService.getApiCep(params.zipcode);
+  findCeps(@Query() params: FindCepViewModel) {
+    return this.cepService.findCep(params.zipcode);
   }
 }

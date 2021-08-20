@@ -1,29 +1,39 @@
 import 'jest';
 import * as request from 'supertest';
+import TestUtil from '../common/test/TestUtil';
 
-test('get /ceps retorna dados com sucesso', () => {
-  return request('http://localhost:3002')
-    .get('/api/v1/ceps?zipcode=14407351')
-    .then((response) => {
-      expect(response.status).toBe(200);
-      expect(response.body).toBeInstanceOf(Object);
-    });
-});
+describe('CepService', () => {
+  const url = 'http://localhost:3002';
 
-test('get /ceps retorna cep inválido', () => {
-  return request('http://localhost:3002')
-    .get('/api/v1/ceps?zipcode=22333999')
-    .then((response) => {
-      console.log('res', response.text);
-      expect(response.status).toBe(400);
-    });
-});
+  const cepValido = '/api/v1/ceps?zipcode=14408050';
 
-test('get /ceps validando a quantidade de caracter informada', () => {
-  return request('http://localhost:3002')
-    .get('/api/v1/ceps?zipcode=22333')
-    .then((response) => {
-      console.log('res', response.text);
-      expect(response.status).toBe(401);
-    });
+  const cepInvalido = '/api/v1/ceps?zipcode=22333999';
+
+  const cepMinLength = '/api/v1/ceps?zipcode=22333';
+
+  it('get /ceps retorna dados com sucesso', () => {
+    const cep = TestUtil.giveMeValidZipCode();
+    return request(url)
+      .get(cepValido)
+      .then((response) => {
+        expect(response.status).toBe(200);
+        expect(cep);
+      });
+  });
+
+  it('get /ceps retorna cep inválido', () => {
+    return request(url)
+      .get(cepInvalido)
+      .then((response) => {
+        expect(response.status).toBe(400);
+      });
+  });
+
+  it('get /ceps validando o limite de caracter informada', () => {
+    return request(url)
+      .get(cepMinLength)
+      .then((response) => {
+        expect(response.status).toBe(401);
+      });
+  });
 });

@@ -1,14 +1,14 @@
 /* eslint-disable prettier/prettier */
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import axios from 'axios';
-import { ConfigurationService } from 'src/config/configuration.service';
+import { ConfigurationService } from '../config/configuration.service';
 import { Cep } from './cep.entity';
 
 @Injectable()
 export class CepService {
   constructor(private readonly configurationService: ConfigurationService) {}
 
-  async getApiCep(zipCode: string): Promise<Cep> {
+  async findCep(zipCode: string): Promise<Cep> {
     if (!zipCode || zipCode.length !== 8) {
       throw new HttpException('Digite um CEP Válido!', HttpStatus.UNAUTHORIZED);
     }
